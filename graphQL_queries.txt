@@ -1,0 +1,271 @@
+
+# Queries
+
+# get client by ID
+# {
+# 	client(id: 1){
+#   	id
+#   	name
+#   	surname
+#   	pesel
+#   	phoneNumber
+# 	}
+# }
+
+
+# get all clients
+# {
+#   clients{
+#     id
+#     name
+#     surname
+#     pesel
+#     phoneNumber
+#   }
+# }
+
+
+# get client with id=1 and his hotels and trips
+# {
+#   client(id: 1) {
+#     id
+#     name
+#     surname
+#     pesel
+#     phoneNumber
+#   }
+#   hotels {
+#     id
+#     name
+#     phoneNumber
+#     website
+#     stars
+#   }
+#   trips {
+#     id
+#     country
+#     city
+#     price
+#     checkinDate
+#     checkoutDate
+#   }
+# }
+
+
+# get trip with id=3 and it's clients
+# {
+# 	trip(id: 3) {
+#   	  id
+#     	country
+#    		city
+#     	price
+#     	checkinDate
+#     	checkoutDate
+#     	client {
+#       	name
+#       	surname
+#       	pesel
+#       	phoneNumber
+#     	}
+#   }
+# }
+
+
+# get all data
+# {
+# 	clients{
+#   	id
+#     name
+#     surname
+#     pesel
+#     phoneNumber
+#   }
+#   hotels{
+#     id
+#     name
+#     phoneNumber
+#     website
+#     stars
+#   }
+#   trips{
+#     id
+#     country
+#     city
+#     price
+#     checkinDate
+#     checkoutDate
+#     client {
+#       id
+#     }
+#   }
+# }
+
+
+
+# Mutations
+
+# create client
+# mutation{
+#   create_client: createClient(
+#     name: "Angelika", 
+#     surname: "Kowalska", 
+#     pesel: "00224455667", 
+#     phoneNumber: "666999777"
+#   ){
+#     client{
+#       id
+#       name
+#       surname
+#       pesel
+#       phoneNumber
+#     }
+#   }
+# }
+
+
+# update client all fields
+# mutation{
+#   update_client: updateClient(
+#     id: 1, 
+#     name: "John", 
+#     surname: "Smith", 
+#     pesel: "12345678901", 
+#     phoneNumber: "555555555"
+#   ){
+#     client{
+#       id
+#       name
+#       surname
+#       pesel
+#       phoneNumber
+#     }
+#   }
+# }
+
+
+# update client one field phoneNumber
+# mutation{
+#   update_client: updateClient(
+#     id: 3, 
+#     phoneNumber: "777777777"
+#   ){
+#     client{
+#       phoneNumber
+#     }
+#   }
+# }
+
+
+# delete client 
+# mutation{
+#   delete_client: deleteClient(id: 5){
+#     success
+#   }
+# }
+
+
+# create hotel with all fields
+# mutation{
+#   create_hotel: createHotel(
+#     name: "hotel testowy", 
+#     phoneNumber: "444555666", 
+#     website: "www.jakasstrona.com", 
+#     stars: "5"
+#   ){
+#     hotel{
+#       id
+#       name
+#       phoneNumber
+#       website
+#       stars
+#     }
+#   }
+# }
+
+
+# create hotel without stars
+# mutation{
+#   create_hotel: createHotel(
+#     name: "hotel testowy2", 
+#     phoneNumber: "444555999", 
+#     website: "www.jakasstrona2.com"
+#   ){
+#     hotel{
+#       id
+#       name
+#       phoneNumber
+#       website
+#       stars
+#     }
+#   }
+# }
+
+
+# update hotel
+# mutation{
+#   update_hotel: updateHotel(
+#     id: 3, 
+#     name: "hotel testowy update"
+#   ){
+#     hotel{
+#       name
+#     }
+#   }
+# }
+
+
+# delete hotel
+# mutation{
+#   delete_hotel: deleteHotel(id: "3"){
+#     success
+#   }
+# }
+
+
+# create Trip aghghggh :))))
+# mutation{
+#   create_trip: createTrip(
+#     client: [1, 2, 3], 
+#     hotel: 6, 
+#     country: "Tunezja", 
+#     city: "Susa", 
+#     price: 10000, 
+#     checkinDate: "2023-11-12T12:00:00", 
+#     checkoutDate: "2023-11-25T12:00:00"
+#   ){
+#     trip{
+#       id
+#       country
+#       city
+#       price
+#       checkinDate
+#       checkoutDate
+#       client{
+#         id
+#       }
+#     }
+#   }
+# }
+
+
+# update Trip
+# mutation{
+#   update_trip: updateTrip(
+#     id: 2,
+#     city: "Warszawa"
+#   ){
+#     trip{
+#       id
+#       country
+#       city
+#     }
+#   }
+# }
+
+
+# delete Trip
+# mutation{
+#   delete_trip: deleteTrip(id: 4){
+#     success
+#   }
+# }
